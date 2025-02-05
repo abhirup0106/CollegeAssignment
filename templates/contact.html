@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Pricing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-image: url('/static/images/Leonardo_Phoenix_09_Create_a_cinematic_keyframe_featuring_a_ha_1.jpg');
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-attachment: fixed; 
+    background-position: center;
+    background-repeat: no-repeat;
+	width:100%;
+	height:auto;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+    transition: background-color 0.3s ease-in-out;
+    justify-content: center;
+}
+
+
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    padding: 1rem;
+    color: white;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    padding: 0 1rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Mobile Navigation */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #333;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Pricing Section */
+#pricing {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 85vh; /* Ensure it takes full height of the viewport */
+    padding: 20px;
+}
+
+.container {
+    text-align: center; /* Center the text inside the container */
+    max-width: 800px; /* Optional: Set a max width to avoid the content being too wide */
+    width: 100%;
+     margin-bottom: 50px;
+    
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: cursive;
+    
+}
+
+select, input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: cursive;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: cursive;
+}
+
+button:hover {
+    background-color: #e55b00;
+}
+
+/* Fixed size and scrollable form container */
+/* Fixed size with scrollable content */
+#pricing-form-container {
+    display: block;
+    width: 100%;
+    max-width: 600px; /* Set amaximum width for the form */
+    max-height: 350px; /* Set a fixed height for the container */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
+    padding: 20px;
+    margin-top: 15px;
+    border: 1px solid #cccccc3f;
+    border-radius: 10px;
+    background-color: #ffffff3a;
+    color: #fdfcfc;
+    font-family: cursive;
+}
+
+#price-table {
+    display: none;
+    margin-top: 20px;
+    overflow-y: auto;
+}
+#price-table h2{
+color:#fafaf5;
+font-family: cursive;
+}
+
+/* Table styling within the scrollable area */
+table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #1f1d1d8e;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1f1d1d8e;
+}
+td{
+    background-color: #1f1d1d8e; 
+}
+
+button {
+    margin-top: 10px;
+}
+
+/* Make sure the form inputs don't overflow */
+select, input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: cursive;
+}
+
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    #pricing {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
+
+#pricing form {
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: left;
+    background-color: #0f0f0f0d;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: cursive;
+}
+
+form label {
+    display: block;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-family: cursive;
+}
+
+form input,
+form select,
+form textarea,
+form button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: cursive;
+}
+
+form button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: cursive;
+}
+
+form button:hover {
+    background: #45a049;
+}
+
+/* Testimonials */
+blockquote {
+    font-style: italic;
+    background: #fff;
+    border-left: 5px solid #4CAF50;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+::selection{
+    background: #fa4299;
+    color: #fff;
+  }
+  /* Additional styling for company name */
+.logo {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 350px;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: cursive;
+    display: flex;
+    gap: 2px;
+  }
+  
+  .logo span {
+    font-weight: 700;
+  }
+  
+  /* Assign colors to each letter */
+  .logo span:nth-child(1) { color: #FF0000; } /* A */
+  .logo span:nth-child(2) { color: #FF7F00; } /* s */
+  .logo span:nth-child(3) { color: #FFFF00; } /* s */
+  .logo span:nth-child(4) { color: #00FF00; } /* i */
+  .logo span:nth-child(5) { color: #00FFFF; } /* g */
+  .logo span:nth-child(6) { color: #0000FF; } /* n */
+  .logo span:nth-child(7) { color: #8A2BE2; } /* m */
+  .logo span:nth-child(8) { color: #FF1493; } /* e */
+  .logo span:nth-child(9) { color: #4B0082; } /* n */
+  .logo span:nth-child(10) { color: #FF4500; } /* t */
+  .logo span:nth-child(11) { color: #FFD700; } /* W */
+  .logo span:nth-child(12) { color: #32CD32; } /* a */
+  .logo span:nth-child(13) { color: #1E90FF; } /* a */
+  .logo span:nth-child(14) { color: #FF69B4; } /* l */
+  .logo span:nth-child(15) { color: #00CED1; } /* a */
+  .logo span:nth-child(16) { color: #DC143C; } /* a */
+
+  .wrapper{
+    overflow: hidden;
+    max-width: 390px;
+    background: #ffffff57;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+    margin-left:420px;
+    margin-bottom: 10px;
+  }
+  .wrapper .title-text{
+    display: flex;
+    width: 200%;
+  }
+  .wrapper .title{
+    width: 50%;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  }
+  .wrapper .slide-controls{
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    margin: 30px 0 10px 0;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+  }
+  .slide-controls .slide{
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.6s ease;
+  }
+  .slide-controls label.signup{
+    color: #000;
+  }
+  .slide-controls .slider-tab{
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    z-index: 0;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  #signup:checked ~ .slider-tab{
+    left: 50%;
+  }
+  #signup:checked ~ label.signup{
+    color: #fff;
+    cursor: default;
+    user-select: none;
+  }
+  #signup:checked ~ label.login{
+    color: #000;
+  }
+  #login:checked ~ label.signup{
+    color: #000;
+  }
+  #login:checked ~ label.login{
+    cursor: default;
+    user-select: none;
+  }
+  .wrapper .form-container{
+    width: 100%;
+    overflow: hidden;
+  }
+  .form-container .form-inner{
+    display: flex;
+    width: 200%;
+  }
+  .form-container .form-inner form{
+    width: 50%;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  }
+  .form-inner form .field{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .form-inner form .field input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+  }
+  .form-inner form .field input:focus{
+    border-color: #fc83bb;
+    /* box-shadow: inset 0 0 3px #fb6aae; */
+  }
+  .form-inner form .field input::placeholder{
+    color: #999;
+    transition: all 0.3s ease;
+  }
+  form .field input:focus::placeholder{
+    color: #b3b3b3;
+  }
+  .form-inner form .pass-link{
+    margin-top: 5px;
+  }
+  .form-inner form .signup-link{
+    text-align: center;
+    margin-top: 30px;
+  }
+  .form-inner form .pass-link a,
+  .form-inner form .signup-link a{
+    color: #fa4299;
+    text-decoration: none;
+  }
+  .form-inner form .pass-link a:hover,
+  .form-inner form .signup-link a:hover{
+    text-decoration: underline;
+  }
+  form .btn{
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+  form .btn .btn-layer{
+    height: 100%;
+    width: 300%;
+    position: absolute;
+    left: -100%;
+    background: -webkit-linear-gradient(right, #a445b2, #fa4299, #a445b2, #fa4299);
+    border-radius: 5px;
+    transition: all 0.4s ease;;
+  }
+  form .btn:hover .btn-layer{
+    left: 0;
+  }
+  form .btn input[type="submit"]{
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    background: none;
+    border: none;
+    color: #fff;
+    padding-left: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  /* Highlight the active link */
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s, background-color 0.3s;
+  font-family: cursive;
+}
+
+.nav-links a.active {
+  color: #fff;
+  background-color: #007BFF;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+	        .menu {
+            display: none;
+            flex-direction: column;
+            background-color: #444;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            width: 150px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+	  .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 15px;
+            color: white;
+        }
+
+        .menu a {
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        .menu a:hover {
+            background-color: #555;
+        }
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+	        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            .menu {
+                display: flex;
+                position: static;
+                background: none;
+                flex-direction: row;
+                width: auto;
+                box-shadow: none;
+            }
+            .menu a {
+                padding: 10px 20px;
+            }
+        }
+
+</style>
+<body>
+	
+<div class="header">
+        <h1>AssignmentWalaa</h1>
+        <span class="menu-toggle" onclick="toggleMenu()">&#x22EE;</span>
+        <div class="menu" id="menu">
+          <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+            <a href="/pricing">Order Placing</a>
+            <a href="/login">Login</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
+<div id="contact">
+  <div class="container">
+	  <h2>Contact Us</h2>
+	  <form action="https://api.web3forms.com/submit" method="POST">
+		  <input type="hidden" name="access_key" value="8a18cbf4-feee-472f-9ed0-c73b79e621fa">
+		  
+		  <label>Name:
+			  <input type="text" name="name" required>
+		  </label>
+		  
+		  <label>Email:
+			  <input type="email" name="email" required>
+		  </label>
+		  
+		  <label>Phone:
+			  <textarea name="phone" required></textarea>
+		  </label>
+		  
+		  <label>Message:
+			  <textarea name="message" required></textarea>
+		  </label>
+		  
+		  <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+		  
+		  <button type="submit">Submit Form</button>
+	  </form>
+  </div>
+</div>
+<footer>
+<div class="container1">
+	<p>&copy; 2024 Innovative Assignment & Project Solutions. Crafted for excellence.</p>
+</div>
+</footer>
+
+<script>
+	     function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+ 
+</script>
+</body>
+</html>
